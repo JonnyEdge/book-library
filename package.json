@@ -19,6 +19,7 @@
   ],
   "author": "Jonny Edge",
   "dependencies": {
+    "bcrypt": "^3.0.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "dotenv": "^5.0.1",

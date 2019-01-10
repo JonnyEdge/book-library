@@ -9,7 +9,7 @@ exports.createUser = (request, response) => {
   });
 
   user.save().then(() => {
-    response.status(201).json(user);
+    response.status(201).json(user.sanitise());
   });
 };
 
