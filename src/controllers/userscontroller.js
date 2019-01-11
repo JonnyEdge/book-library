@@ -10,7 +10,19 @@ exports.createUser = (request, response) => {
 
   user.save().then(() => {
     response.status(201).json(user.sanitise());
-  });
+  })
+    .catch((error) => {
+      if (error.name === 'ValidationError') {
+        const emailError = error.errors.email ? error.errors.email.message : null;
+        response.status(400).json({
+          errors: {
+            email: emailError,
+          },
+        });
+      } else {
+        response.sendStatus(500);
+      }
+    });
 };
 
 module.exports = exports;
